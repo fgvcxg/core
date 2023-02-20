@@ -13,6 +13,12 @@ import org.springframework.context.annotation.Configuration;
 
 
 @Configuration
+//2023-02-20 5. 싱글톤 컨테이너
+// @Configuration과 바이트 코드 조작의 마법
+//@Configuration 를 붙이면 바이트코드를 조작하는 CGLIB 기술을 사용해서 싱글톤을 보장한다
+//이것을 주석처리하면 CGLIB 기술을 쓰지 않게 된다
+//또 스프링 빈들도 다 등록이 되지만 예전처럼 싱글톤이 되지 않고 자바 코드 그 자체로 출력이 된다
+//
 public class AppConfig {
 
     //@Bean memberService -> new MemoryMemberRepository() 호출한다

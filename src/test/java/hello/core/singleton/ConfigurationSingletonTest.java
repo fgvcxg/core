@@ -32,4 +32,18 @@ public class ConfigurationSingletonTest {
         assertThat(orderService.getMemberRepositiry()).isSameAs(memberRepository);
 
     }
+
+    //2023-02-20 5. 싱글톤 컨테이너
+    // @Configuration과 바이트 코드 조작의 마법
+    @Test
+    void configurationDeep() {
+        ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+        AppConfig bean = ac.getBean(AppConfig.class);
+
+        System.out.println("bean = " + bean.getClass());
+        //bean = class hello.core.AppConfig$$EnhancerBySpringCGLIB$$641ec7cb
+        //이렇게 출력이 되는데 이것은 Bean을 등록을 해서 컨테이너에서 생성을 했기 때문에 위에 이렇게 붙는 것이다
+        
+
+    }
 }
