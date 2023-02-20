@@ -6,4 +6,6 @@ public interface MemberRepositiry {
 
 
     Member findById(Long memberId);
+
+
 }

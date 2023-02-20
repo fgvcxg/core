@@ -17,6 +17,9 @@ class StatefulServiceTest {
         StatefulService statefulService1 = ac.getBean(StatefulService.class);
         StatefulService statefulService2 = ac.getBean(StatefulService.class);
 
+
+
+
         //A사용자가 10000원 주문
         statefulService1.order("userA", 10000);
 
