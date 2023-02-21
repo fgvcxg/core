@@ -1,8 +1,12 @@
 package hello.core.member;
 
+import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
+//2023-02-21 6 - 1 컴포넌트 스캔과 의존관계 주입 수정
 public class MemoryMemberRepository implements MemberRepositiry{
 
     private static Map<Long, Member> store = new HashMap<>();
