@@ -55,11 +55,28 @@ public class OrderServiceImpl implements OrderService{
     //스프링 빈에 등록된 개체여만 가능하다
 
 
+
+    //2023-02-22 7. 의존관계 자동 주입 -3 생성자 주입을 선택하라
     @Autowired
     public OrderServiceImpl(MemberRepositiry memberRepositiry, DiscountPolicy discountPolicy) {
         this.memberRepositiry = memberRepositiry;
         this.discountPolicy = discountPolicy;
     }
+    //위에 생성자 주입을 할때 final 을 적으면 컴파일에서 초기화 할때 들어와야 하는 값이 들어오지 않았다고 하며 오류가 난다
+    //그렇기에 생성자 주입을 하면서 final 을 쓰는 것이 좋다
+    //생성자 주입 방식을 선택하는 이유는 여러가지가 있지만, 프레임 워크에 의존하지 않고, 순수한 자바 언어의 특징을 잘 살리는 방법
+    //기본으로 생성자 주입을 사용하고, 필수 값이 아닌 경우에는 수정자 주입 방식으로 옵션으로 부여하면 된다. 생성자 주입과 수정자 주입을 동시에 사용할 수 있다
+    //항상 생성자 주입을 선택하고 가끔 옵션이 필요하면 수정자 주입을 선택하라. 필드 주입은 사용하지 않는 게 좋다
+
+//    @Autowired
+//    public void setMemberRepositiry(MemberRepositiry memberRepositiry) {
+//        this.memberRepositiry = memberRepositiry;
+//    }
+//
+//    @Autowired
+//    public void setDiscountPolicy(DiscountPolicy discountPolicy) {
+//        this.discountPolicy = discountPolicy;
+//    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
